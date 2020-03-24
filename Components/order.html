@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>First Reaction</title>
+	<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+	<div id="root"></root>
+	<script type="text/babel">
+		class DisplayOrder extends React.Component{
+			render(){
+				return <div><h1>Order Details</h1>
+				<b>Id: {this.props.id}</b><br/>
+				<b>Name: {this.props.name}</b><br/>
+				<b>Price: {this.props.price}</b><br/>
+				<DisplayShippingAddress address={this.props.address}/><br/>
+				<PaymentInfo payment_info={this.props.payment_info}/>
+				</div>
+			}
+		}
+
+		class DisplayShippingAddress extends React.Component{
+			render(){
+				return <div><br/><br/><b>Address</b><br/>
+				<b>Street:</b> {this.props.address.street}<br/>
+				<b>City:</b> {this.props.address.city}<br/>
+				<b>State:</b> {this.props.address.state}<br/>
+				<b>Country:</b> {this.props.address.country}<br/>
+				<b>ZipCode:</b> {this.props.address.zip}<br/>
+				</div>
+			}
+		}
+
+		class PaymentInfo extends React.Component{
+			render(){
+				return <div><br/><br/><b>Payment Details</b><br/>
+				<b>Name:</b> {this.props.payment_info.name}<br/>
+				<b>CC No:</b> {this.props.payment_info.cc_no}<br/>
+				<b>Expiry Date:</b> {this.props.payment_info.expiry_date}
+				</div>
+			}
+		}
+
+		var address={
+			street: "Gradington Drive",
+			city: "Westerville",
+			state: "OH",
+			country: "United States",
+			zip: "43081"
+		}
+
+		var payment_info={
+			name: "Manesh Reddy Kommidi",
+			cc_no: "1234567890123456",
+			expiry_date: "03/24"
+		}
+
+		ReactDOM.render(<div><DisplayOrder name="Manesh" id='123' price="$20" address= {address} payment_info= {payment_info} /></div>,document.getElementById("root"));
+	</script>
+</body>
+</html>

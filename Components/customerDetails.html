@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>First Reaction</title>
+	<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+	<div id="root"></root>
+	<script type="text/babel">
+		class DisplayCustomer extends React.Component{
+			render(){
+				return <div><h1>Customer Details</h1>
+				<b>Name: {this.props.name}</b><br/>
+				<b>Email: {this.props.email}</b>
+				<DisplayAddress address={this.props.address}/>
+				</div>
+			}
+		}
+
+		class DisplayAddress extends React.Component{
+			render(){
+				return <div><b>Address</b><br/>
+				<b>Street:</b> {this.props.address.street}<br/>
+				<b>City:</b> {this.props.address.city}
+				</div>
+			}
+		}
+
+		var address1={
+			street: "Gradington Drive",
+			city: "Westerville"
+		}
+		ReactDOM.render(<div><DisplayCustomer name="Manesh" email="maneshkommidi@gmail.com" address= {address1} /></div>,document.getElementById("root"));
+	</script>
+</body>
+</html>
